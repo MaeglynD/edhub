@@ -1,28 +1,78 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+		<!-- REF: NAV -->
+		<v-navigation-drawer
+			permanent
+			class="e-nav"
+			:expand-on-hover="!nav_permanence"
+			mini-variant-width="68"
+			floating
+		>
+			<div class="e-nav-logo-container" @click="nav_permanence ^= true">
+				<img 
+					:src="require('@/assets/logo.png')"
+					class="e-nav-logo"
+				>
+				<div class="e-logo-overlay">
+					edhub
+				</div>
+			</div>
+			<div class="e-nav-routes-container">
+				<div
+					v-for="(x, ia) in routes"
+					:key="`section-${ia}`"
+					class="e-nav-route-section"
+				>
+					<div class="e-nav-sub">
+						{{ x.subheader }}
+					</div>
+					<router-link 
+						v-for="(y, ib) in x.routes"
+						:key="`section-${ia}-route-${ib}`"
+						class="e-nav-route"
+						:to="y.path"
+						v-ripple="{ class: 'e-nav-ripple' }"
+					>
+						<v-icon class="e-nav-icon">
+							mdi-{{ y.icon }}
+						</v-icon>
+						<div>
+							{{ y.name }}
+						</div>
+					</router-link>
+				</div>
+			</div>
+		</v-navigation-drawer>
+		<router-view 
+			class="e-router-view"
+		/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import routes from './router/routes';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+
+	data() {
+		return {
+			routes,
+			nav_permanence: true,
+		}
+	},
+
+	created() {
+		//
+	},
+
+	methods: {
+		//
+	}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import './styles/global.scss';
+@import './styles/nav.scss';
 </style>

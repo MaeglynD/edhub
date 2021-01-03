@@ -1,0 +1,91 @@
+.e-nav{
+	color: $purple-a;
+	border-right: $border-a;
+
+	.e-nav-ripple{
+		color: rgba(85, 33, 180, 0.4);
+	}
+
+	.e-nav-logo-container{
+		height: 85px;
+		padding: 30px;
+    padding-left: 20.5px;
+
+		img{
+			width: 92px;
+		}
+		
+		.e-logo-overlay{
+				position: absolute;
+				height: 60px;
+				top: 0;
+				left: 61px;
+				width: 100px;
+				background: white;
+				transition: 0.2s opacity;
+				will-change: opacity;
+				line-height: 94px;
+		}
+	}
+
+	.e-nav-routes-container{
+		padding: 12.5px;
+		padding-top: 0;
+
+		.e-nav-route-section{
+			.e-nav-sub{
+				font-weight: 500;
+				text-transform: uppercase;
+				color: $grey-a;
+				font-size: 10px;
+				letter-spacing: 1px;
+				padding: 12.5px;
+				transition: 0.2s;
+				will-change: opacity;
+			}
+
+			.e-nav-route{
+				display: flex;
+				font-size: 13px;
+				text-transform: capitalize;
+				height: 35px;
+				line-height: 35px;
+				font-weight: 500;
+				margin-bottom: 8px;
+				border-radius: 3px;
+				overflow: hidden;
+				transition: 0.2s background;
+				will-change: background;
+
+				.e-nav-icon{
+					padding: 0 12.5px;
+					font-size: 20px;
+				}
+
+				&.router-link-active{
+					background: $purple-c;
+				}
+
+				&:hover{
+					background: rgba(247, 245, 255, 0.5);
+				}
+			}
+		}
+	}
+
+	&.v-navigation-drawer--mini-variant{
+		.e-nav-logo-container{
+			.e-logo-overlay{
+				opacity: 0;
+			}
+		}
+
+		.e-nav-routes-container{
+			.e-nav-route-section{
+				.e-nav-sub{
+					opacity: 0
+				}
+			}
+		}
+	}
+}
