@@ -9,7 +9,10 @@
 			mini-variant-width="68"
 			floating
 		>
-			<div class="e-nav-logo-container" @click="nav_permanence ^= true">
+			<div
+				class="e-nav-logo-container"
+				@click="nav_permanence ^= true"
+			>
 				<img 
 					:src="require('@/assets/logo.png')"
 					class="e-nav-logo"
